@@ -1,0 +1,4 @@
+[19-May-2025 14:45:25 UTC] PHP Notice:  ob_end_flush(): Failed to send buffer of zlib output compression (1) in C:\MAMP\htdocs\portfolio\wp-includes\functions.php on line 5471
+[19-May-2025 14:45:25 UTC] PHP Notice:  ob_end_flush(): Failed to send buffer of zlib output compression (1) in C:\MAMP\htdocs\portfolio\wp-includes\functions.php on line 5471
+[19-May-2025 14:45:28 UTC] PHP Notice:  ob_end_flush(): Failed to send buffer of zlib output compression (1) in C:\MAMP\htdocs\portfolio\wp-includes\functions.php on line 5471
+[19-May-2025 14:45:28 UTC] PHP Notice:  ob_end_flush(): Failed to send buffer of zlib output compression (1) in C:\MAMP\htdocs\portfolio\wp-includes\functions.php on line 5471

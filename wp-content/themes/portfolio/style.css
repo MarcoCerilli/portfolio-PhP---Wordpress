@@ -1,0 +1,1109 @@
+/*
+Theme Name: Tema Porfolio
+Author: Marco Cerilli
+Description: Tema portfolio personale con stile scuro e moderno
+Version: 1.0
+*/
+
+
+
+
+
+/*  CSS PER SEO  */
+
+.seo-hidden-text {
+    position: absolute !important;
+    left: -9999px !important;
+    top: auto !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+}
+
+
+
+/*  BREADCRUMB CSS   */
+
+.breadcrumb-wrapper {
+    background: #f5f5f5;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin: 1rem auto;
+    max-width: 900px;
+    font-size: 0.9rem;
+    font-family: Arial, sans-serif;
+    color: #555;
+}
+
+#breadcrumbs a {
+    color: #21759b;
+    text-decoration: none;
+}
+
+#breadcrumbs a:hover {
+    text-decoration: underline;
+}
+
+#breadcrumbs {
+    margin: 0;
+}
+
+
+
+
+/* Gestione sfondo particles con barra admin WordPress */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* Quando la barra admin è presente */
+body.admin-bar #particles-js {
+    top: 32px;
+    /* Altezza barra admin standard */
+    height: calc(100vh - 32px);
+}
+
+/* Per schermi retina (es. MacBook Pro Retina) la barra è più alta */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi) {
+    body.admin-bar #particles-js {
+        top: 46px;
+        height: calc(100vh - 46px);
+    }
+}
+
+
+#wpadminbar {
+    display: none !important;
+}
+
+html {
+    margin-top: 0 !important;
+}
+
+
+
+
+
+
+/* Tema chiaro (default) */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    /* previene scroll orizzontale */
+    font-family: Arial, sans-serif;
+    background-color: transparent;
+    color: #222;
+    line-height: 1.6;
+}
+
+
+.site {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 40px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .site {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 100%;
+        /* permetti al container di adattarsi */
+        margin: 0 auto;
+        /* per centrare */
+        box-sizing: border-box;
+        /* assicurati che padding e border siano inclusi nella larghezza */
+    }
+}
+
+
+
+
+/* ==================== NAVIGATION ==================== */
+.main-navigation {
+    background-color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+/* ==================== LOGO ==================== */
+.main-navigation .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.main-navigation .logo a {
+    color: #f39c12;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ==================== MENU DESKTOP ==================== */
+.main-navigation .menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.main-navigation .menu li {
+    margin-left: 20px;
+}
+
+.main-navigation .menu li:first-child {
+    margin-left: 0;
+}
+
+.main-navigation .menu li a {
+    color: #222;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.main-navigation .menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px;
+    width: 0;
+    background-color: #f39c12;
+    transition: width 0.3s ease;
+}
+
+.main-navigation .menu li a:hover,
+.main-navigation .menu li a:focus {
+    color: #f39c12;
+}
+
+.main-navigation .menu li a:hover::after,
+.main-navigation .menu li a:focus::after {
+    width: 100%;
+}
+
+/* ==================== TOGGLE BUTTON ==================== */
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+}
+
+/* ==================== MOBILE MENU ==================== */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+        order: 2;
+    }
+
+    .main-navigation {
+        align-items: flex-start;
+    }
+
+    .main-navigation .logo {
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .main-navigation .menu {
+        flex-direction: column;
+        overflow: hidden;
+        width: 100%;
+        max-height: 0;
+        opacity: 0;
+        padding: 0;
+        margin-top: 10px;
+        background-color: white;
+        border-top: 1px solid #ccc;
+        transition: max-height 0.4s ease, opacity 0.3s ease;
+    }
+
+    .main-navigation .menu.active {
+        max-height: 500px;
+        opacity: 1;
+    }
+
+    .main-navigation .menu li {
+        margin: 10px 0;
+        text-align: center;
+    }
+}
+
+
+
+main {
+    flex: 1;
+    max-width: 1400px;
+    margin: 60px auto 40px;
+    padding: 20px 30px;
+    background-color: transparent;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+h1,
+h2,
+h3 {
+    color: #f39c12;
+    margin-top: 0;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: #2a2a2a;
+    margin-bottom: 30px;
+}
+
+
+.progetti-home .lista-progetti article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+.progetti-home .lista-progetti article:hover {
+    background-color: #f0e68c;
+    /* un giallo chiaro */
+    box-shadow: 0 0 15px #f39c12;
+}
+
+.progetti-home img {
+    max-width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.competenze-home ul {
+    list-style-type: disc;
+    margin-left: 25px;
+    color: #555;
+}
+
+a {
+    color: #f39c12;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+    color: #ffb94e;
+    text-decoration: underline;
+}
+
+.site-footer {
+    background-color: #f5f5f5;
+    color: #222;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+/* Sezione Chi Sono - CSS */
+
+
+main.chi-sono-page {
+    max-width: 960px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.sezione-intro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.sezione-intro .foto-profilo {
+    flex-shrink: 0;
+    width: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sezione-intro .foto-profilo img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sezione-intro .descrizione {
+    flex: 1;
+    min-width: 280px;
+}
+
+.box-competenze {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.box {
+    flex: 1 1 280px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.box h2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.box i {
+    font-size: 1.2em;
+}
+
+
+/* Immagine profilo */
+.foto-profilo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f39c12;
+}
+
+/* Testo descrizione */
+.descrizione-chi-sono {
+    flex: 1;
+}
+
+.descrizione-chi-sono h2 {
+    margin-top: 0;
+    color: #f39c12;
+}
+
+.descrizione-chi-sono p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #2a2a2a;
+    font-weight: 400;
+}
+
+/* Responsive: da desktop a mobile */
+@media (max-width: 768px) {
+    .chi-sono {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .descrizione-chi-sono {
+        flex: unset;
+        margin-top: 20px;
+    }
+
+    .foto-profilo img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+
+.contattami {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.bottoni-contatto {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.bottoni-contatto a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.btn-whatsapp {
+    background-color: #25D366;
+    color: white;
+}
+
+.btn-email {
+    background-color: #007BFF;
+    color: white;
+}
+
+.btn-cv {
+    background-color: #D32F2F;
+    color: white;
+}
+
+.bottoni-contatto a:hover {
+    filter: brightness(1.1);
+}
+
+
+
+
+
+/* Competenze dettagliate */
+
+.lista-competenze {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    list-style: none;
+    padding-left: 0;
+    color: #ddd;
+}
+
+.lista-competenze li {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lista-competenze li i {
+    color: #f39c12;
+    font-size: 1.5rem;
+    min-width: 25px;
+}
+
+
+/* ============================
+LISTA COMPETENZE
+   ============================ */
+
+.lista-competenze {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    list-style: none;
+    padding-left: 0;
+    color: #444;
+    /* colore testo lista (scuro per chiaro) */
+    font-family: Arial, sans-serif;
+}
+
+.lista-competenze li {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    /* eredita il colore dal genitore */
+}
+
+.lista-competenze li i {
+    color: #f39c12;
+    /* arancione */
+    font-size: 1.5rem;
+    min-width: 25px;
+}
+
+/* STILE PER LE CARD COMPETENZE */
+.competenza-icon {
+    background-color: rgba(0, 123, 255, 0.1);
+    /* colore dinamico per ogni categoria */
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.card-competenze {
+    flex: 1 1 250px;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+
+
+
+
+
+
+/* Dettaglio progetto - versione chiara */
+
+.dettaglio-progetto {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    /* Sfondo bianco */
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    /* Ombra leggera */
+    font-family: Arial, sans-serif;
+    color: #333333;
+    /* Testo scuro */
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+.dettaglio-progetto h2 {
+    font-size: 2rem;
+    border-bottom: 2px solid #f39c12;
+    /* Linea arancione sotto il titolo */
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    color: #f39c12;
+    text-align: center;
+}
+
+/* Margine uniforme tra sezioni */
+.dettaglio-progetto .competenza-list,
+.dettaglio-progetto .tecnologie-usate,
+.dettaglio-progetto .descrizione-completa,
+.dettaglio-progetto .link-progetti,
+.dettaglio-progetto .immagine-extra {
+    margin-bottom: 30px;
+}
+
+/* Link progetto */
+.dettaglio-progetto .link-progetti a {
+    color: #f39c12;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.dettaglio-progetto .link-progetti a:hover {
+    text-decoration: underline;
+}
+
+/* Immagine extra */
+.dettaglio-progetto .immagine-extra img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+/* Tecnologie usate */
+.dettaglio-progetto .tecnologie-usate p {
+    margin-top: 10px;
+    font-size: 0.95rem;
+}
+
+/* Competenze (tassonomia) */
+.dettaglio-progetto .competenza-list {
+    font-size: 0.95rem;
+}
+
+.dettaglio-progetto .competenza-list a {
+    color: #555;
+    text-decoration: none;
+    margin-right: 8px;
+}
+
+.dettaglio-progetto .competenza-list a:hover {
+    color: #f39c12;
+    text-decoration: underline;
+}
+
+
+/* PAGINA PROGETTI   */
+
+
+.pagina-progetti {
+    max-width: 1400px;
+    /* contenitore principale abbastanza ampio, va bene */
+    margin: 40px auto;
+    /* verticale 40px e centrato orizzontalmente */
+    padding: 0 30px;
+    /* padding laterale per distanziare dai bordi */
+    color: #333;
+    /* testo scuro, leggibile */
+    font-family: Arial, sans-serif;
+    /* font leggibile e pulito */
+    box-sizing: border-box;
+    /* ottimo, include padding e bordo nelle dimensioni */
+}
+
+.titolo-pagina {
+    text-align: center;
+    /* titolo centrato */
+    font-size: 2.5rem;
+    /* dimensione abbastanza grande e visibile */
+    margin-bottom: 40px;
+    /* spazio sotto il titolo */
+    color: #f39c12;
+    /* colore arancio/giallo, coerente con tema */
+}
+
+.lista-progetti {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    /* spazio tra le card */
+    margin-top: 30px;
+    /* spazio sopra la lista */
+    align-items: stretch;
+    /* uniforma l’altezza delle colonne */
+}
+
+.progetto {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    color: #222;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    height: 100%;
+    /* per allineamento verticale uniforme */
+}
+
+.progetto:hover {
+    background-color: #fff7e6;
+    box-shadow: 0 10px 25px rgba(243, 156, 18, 0.3);
+    color: #f39c12;
+    transform: translateY(-5px);
+}
+
+
+.link-progetto {
+    display: block;
+    /* permette di estendere il link su tutta la larghezza */
+    text-decoration: none;
+    color: inherit;
+}
+
+.thumb-progetto {
+    overflow: hidden;
+    max-width: 100%;
+    /* aumentato da 300px a 350px */
+    margin: 0 auto 20px;
+    /* aggiunto margine in basso per distanziare dal titolo o altri elementi */
+    border-radius: 8px;
+    /* per un effetto più moderno, opzionale */
+
+}
+
+.thumb-progetto img {
+    width: 100%;
+    /* copre tutta la larghezza del contenitore */
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    /* centra orizzontalmente */
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+
+
+.thumb-progetto img:hover {
+    transform: scale(1.1);
+}
+
+.titolo-progetto {
+    font-size: 1.4rem;
+    margin: 0 0 20px 0;
+    /* margine inferiore aumentato da 15px a 20px */
+    color: #f39c12;
+    line-height: 1.2;
+    padding: 12px;
+}
+
+
+.estratto-progetto {
+    margin-top: auto;
+    padding: 10px 5px 0;
+    color: #222;
+    font-size: 1rem;
+    line-height: 1.5;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    flex-grow: 1;
+}
+
+.estratto-progetto p {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    /* Riduci a 4 linee se vuoi equilibrio */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+
+
+.nessun-progetto {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    font-size: 1.2rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pagina-progetti {
+        max-width: 95vw;
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+}
+
+
+
+/*  TASSONOMIA COMPETENZA CSS  */
+
+
+.competenza-list {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.competenza-list a {
+    display: inline-block;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    margin: 5px 5px 0 0;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.competenza-list a:hover {
+    background-color: #dcdcdc;
+}
+
+
+
+/* MENU HAMBURGER */
+
+.menu {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-navigation {
+        position: relative;
+        /* necessario per posizionare .menu assoluto */
+    }
+
+    .menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        /* allinea a sinistra le voci */
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu.active {
+        display: flex;
+        background-color: white;
+        position: absolute;
+        top: 100%;
+        /* esattamente sotto il nav */
+        right: 0;
+        width: 200px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        padding: 1rem 0;
+        z-index: 999;
+    }
+
+    .menu li {
+        width: 100%;
+    }
+
+    .menu a {
+        padding: 0.75rem 1rem;
+        width: 100%;
+    }
+}
+
+
+
+/* CSS PER BARRA LATERALE ICONE */
+.floating-buttons.top-buttons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+/* Pulsante "Torna su" in basso a destra */
+
+.floating-buttons.bottom-button {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    z-index: 1000;
+}
+
+
+
+/* Stile comune per tutti i pulsanti */
+.float-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: white;
+    background-color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+    padding: 0;
+}
+
+/* Icone interne */
+.float-btn i {
+    font-size: 22px;
+    line-height: 1;
+    margin: 0;
+    /* Nessun extra spazio */
+}
+
+/* Hover */
+.float-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Colori specifici */
+.float-btn.whatsapp {
+    margin-top: 30px;
+    background-color: #25D366;
+}
+
+.float-btn.email {
+    margin-top: 10px;
+    background-color: #007bff;
+}
+
+
+
+
+
+/* Responsive: dispositivi mobili */
+@media (max-width: 600px) {
+    .floating-buttons.top-buttons {
+        top: 15px;
+        right: 10px;
+        gap: 12px;
+    }
+
+    .floating-buttons.bottom-button {
+        bottom: 30px;
+        right: 10px;
+    }
+
+    .float-btn {
+        width: 45px;
+        height: 45px;
+    }
+
+    .float-btn i {
+        font-size: 20px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Tema scuro, applicato quando il body ha classe .dark-mode */
+.dark-mode html,
+.dark-mode body {
+    background-color: #121212;
+    color: #eee;
+}
+
+.dark-mode .site {
+    background-color: #121212;
+}
+
+/* Navigazione */
+.dark-mode .main-navigation {
+    background-color: #222;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode .main-navigation .logo a {
+    color: #f39c12;
+}
+
+.dark-mode .main-navigation .menu li a {
+    color: #eee;
+}
+
+.dark-mode .main-navigation .menu li a:hover,
+.dark-mode .main-navigation .menu li a:focus {
+    color: #f39c12;
+}
+
+/* Contenuto principale */
+.dark-mode main {
+    background-color: #1e1e1e;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    color: #ddd;
+}
+
+
+
+
+/* Sezione progetti */
+.dark-mode .progetti-home .lista-progetti article {
+    background-color: #2a2a2a;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    color: #ddd;
+}
+
+.dark-mode .progetti-home .lista-progetti article:hover {
+    background-color: #3a3a3a;
+    box-shadow: 0 0 15px #f39c12;
+}
+
+/* Footer */
+.dark-mode .site-footer {
+    background-color: #222;
+    color: #eee;
+    box-shadow: inset 0 10px 15px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Sezione "Chi sono" */
+.dark-mode .chi-sono {
+    background-color: #2a2a2a;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+    color: #ddd;
+}
+
+.dark-mode .descrizione-chi-sono h2 {
+    color: #f39c12;
+}
+
+.dark-mode .descrizione-chi-sono p {
+    color: #ccc;
+}
+
+.dark-mode .foto-profilo img {
+    border-color: #f39c12;
+}
